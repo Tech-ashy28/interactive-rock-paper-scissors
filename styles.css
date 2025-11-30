@@ -171,3 +171,36 @@ h4 {
   vertical-align: middle;
   margin: 0 5px;
 }
+
+/* Ensure images inside move buttons scale nicely */
+.move-btn img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+/* Small phone override: make UI larger on narrow viewports */
+@media (max-width: 480px) {
+  :root {
+    --btn-size: 88px;
+    --btn-font: 1.3rem;
+    --heading-size: 1.9rem;
+    --result-size: 1.2rem;
+    --score-size: 1.1rem;
+    --choice-size: 1.05rem;
+    --reset-padding: 12px 20px;
+    --btn-border: 2.5px;
+    --reset-border: 1.5px;
+    --reset-font-size: 1rem;
+    --reset-radius: 16px;
+    --h4-margin: 18px;
+    --move-margin: 10px;
+    --result-margin-top: 14px;
+    --score-margin-top: 12px;
+    --choice-margin: 12px;
+    --reset-margin-top: 14px;
+  }
+}
