@@ -36,7 +36,7 @@ function pickComputerMove() {
 function playGame(playerMove) {
   document.querySelector(".result-display").innerHTML = "";
   document.querySelector(".choice").innerHTML = "";
-  
+
   const computerMove = pickComputerMove();
 
   let result = "";
@@ -84,7 +84,7 @@ function playGame(playerMove) {
   const choiceDisplay = document.querySelector(".choice");
   choiceDisplay.innerHTML = `You picked <img src="icons/${playerMove}-emoji.png">
 
-        Computer picked <img src="icons/${computerMove}-emoji.png">`;
+    Computer picked <img src="icons/${computerMove}-emoji.png">`;
 
   // alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
   // Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
@@ -94,4 +94,17 @@ function scoreDisplay() {
   document.querySelector(
     ".game-score"
   ).innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+}
+
+// Resets the score to zero 
+function resetScore() {
+
+  score = {
+    wins: 0,
+    losses: 0,
+    ties: 0,
+  };
+
+  localStorage.setItem("score", JSON.stringify(score));
+  scoreDisplay();
 }
