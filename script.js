@@ -29,14 +29,14 @@ function pickComputerMove() {
   } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
     computerMove = "scissors";
   }
-
   return computerMove;
 }
+const resultDisplay = document.querySelector(".result-display");
+const choiceDisplay = document.querySelector(".choice");
+
+
 
 function playGame(playerMove) {
-  document.querySelector(".result-display").innerHTML = "";
-  document.querySelector(".choice").innerHTML = "";
-
   const computerMove = pickComputerMove();
 
   let result = "";
@@ -78,10 +78,9 @@ function playGame(playerMove) {
   localStorage.setItem("score", JSON.stringify(score));
   scoreDisplay();
 
-  const resultDisplay = document.querySelector(".result-display");
   resultDisplay.innerHTML = result;
 
-  const choiceDisplay = document.querySelector(".choice");
+  
   choiceDisplay.innerHTML = `You picked <img src="icons/${playerMove}-emoji.png">
 
     Computer picked <img src="icons/${computerMove}-emoji.png">`;
@@ -96,8 +95,10 @@ function scoreDisplay() {
   ).innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 }
 
-// Resets the score to zero 
+// Resets the score to zero (asks for confirmation first)
 function resetScore() {
+  // const confirmed = confirm("Are you sure you want to reset the scores?");
+  // if (!confirmed) return;
 
   score = {
     wins: 0,
@@ -107,4 +108,7 @@ function resetScore() {
 
   localStorage.setItem("score", JSON.stringify(score));
   scoreDisplay();
+
+  resultDisplay.innerHTML = ""
+  choiceDisplay.innerHTML = "";
 }
